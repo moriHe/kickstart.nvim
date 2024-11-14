@@ -4,7 +4,7 @@ return {
   config = function()
     require('toggleterm').setup {
       -- You can add configuration options here
-      open_mapping = [[<leader>t]], -- Example: Set Ctrl + t as the toggle shortcut
+      open_mapping = [[<C-t>]],
     }
   end,
 }
