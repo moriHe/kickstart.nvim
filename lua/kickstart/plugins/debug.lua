@@ -18,7 +18,10 @@ return {
     'nvim-neotest/nvim-nio',
 
     -- Installs the debug adapters for you
-    'williamboman/mason.nvim',
+    {
+      'williamboman/mason.nvim',
+      opts = { ensure_installed = { 'java-debug-adapter', 'java-test' } },
+    },
     'jay-babu/mason-nvim-dap.nvim',
 
     -- Add your own debuggers here
