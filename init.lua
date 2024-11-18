@@ -169,7 +169,7 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Diagnostic keymaps
 -- TODO: Incorporate whichkey
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = '[Q]uickfix Toggle List' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -321,18 +321,11 @@ require('lazy').setup({
         { '<leader>b', group = '[B]uffer', mode = { 'n' } },
         { '<leader>s', group = '[S]earch', mode = { 'n' } },
         { '<leader>r', group = '[R]ename', mode = { 'n' } },
+        { '<leader>q', group = '[Q]uickfix Toggle List', mode = { 'n' } },
         { '<leader>e', group = '[E]xtract', mode = { 'n' } },
         { '<leader>g', group = '[G]o to', mode = { 'n' } },
         { '<leader>t', group = '[T]oggle', mode = { 'n' } },
         { '<leader>c', group = '[C]ode', mode = { 'n' } },
-        { '<leader>l', group = '[L]ist', mode = { 'n' } },
-        --        { '<leader>c', group = '[C]ode', mode = { 'n', 'x' } },
-        --       { '<leader>d', group = '[D]ocument' },
-        --       { '<leader>r', group = '[R]ename' },
-        --      { '<leader>s', group = '[S]earch' },
-        --     { '<leader>w', group = '[W]orkspace' },
-        --    { '<leader>t', group = '[T]oggle' },
-        --      { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
       },
     },
   },
@@ -421,7 +414,7 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[D]iagnostics' })
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[R]esume' })
       vim.keymap.set('n', '<leader>sh', builtin.oldfiles, { desc = '[H]istory' })
-      vim.keymap.set('n', '<leader>ba', builtin.buffers, { desc = '[A]ll' })
+      vim.keymap.set('n', '<leader>bl', builtin.buffers, { desc = '[L]ist' })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>sb', function()
@@ -434,12 +427,12 @@ require('lazy').setup({
 
       -- It's also possible to pass additional configuration options.
       --  See `:help telescope.builtin.live_grep()` for information about particular keys
-      vim.keymap.set('n', '<leader>so', function()
+      vim.keymap.set('n', '<leader>sB', function()
         builtin.live_grep {
           grep_open_files = true,
           prompt_title = 'Live Grep in Open Files',
         }
-      end, { desc = '[O]pen Buffers' })
+      end, { desc = 'Open [B]uffers' })
 
       -- Shortcut for searching your Neovim configuration files
       vim.keymap.set('n', '<leader>sn', function()
@@ -524,35 +517,35 @@ require('lazy').setup({
           -- Jump to the definition of the word under your cursor.
           --  This is where a variable was first declared, or where a function is defined, etc.
           --  To jump back, press <C-t>.
-          map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+          map('<leader>gd', require('telescope.builtin').lsp_definitions, '[D]efinition')
 
           -- Find references for the word under your cursor.
-          map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+          map('<leader>glr', require('telescope.builtin').lsp_references, '[R]eferences')
 
           -- Jump to the implementation of the word under your cursor.
           --  Useful when your language has ways of declaring types without an actual implementation.
-          map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+          map('<leader>gi', require('telescope.builtin').lsp_implementations, '[I]mplementation')
 
           -- Jump to the type of the word under your cursor.
           --  Useful when you're not sure what type a variable is and you want to see
           --  the definition of its *type*, not where it was *defined*.
-          map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
+          map('<leader>gt', require('telescope.builtin').lsp_type_definitions, '[T]ype Definition')
 
           -- Fuzzy find all the symbols in your current document.
           --  Symbols are things like variables, functions, types, etc.
-          map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
+          map('<leader>gls', require('telescope.builtin').lsp_document_symbols, '[S]ymbols Current Buffer')
 
           -- Fuzzy find all the symbols in your current workspace.
           --  Similar to document symbols, except searches over your entire project.
-          map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+          map('<leader>glS', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[S]ymbols Workspace')
 
           -- Rename the variable under your cursor.
           --  Most Language Servers support renaming across files, etc.
-          map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
+          map('<leader>r', vim.lsp.buf.rename, '[R]ename')
 
           -- Execute a code action, usually your cursor needs to be on top of an error
           -- or a suggestion from your LSP for this to activate.
-          map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction', { 'n', 'x' })
+          map('<leader>ca', vim.lsp.buf.code_action, '[A]ction', { 'n', 'x' })
 
           -- WARN: This is not Goto Definition, this is Goto Declaration.
           --  For example, in C this would take you to the header.
