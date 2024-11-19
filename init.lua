@@ -326,6 +326,7 @@ require('lazy').setup({
         { '<leader>g', group = '[G]o to', mode = { 'n' } },
         { '<leader>t', group = '[T]oggle', mode = { 'n' } },
         { '<leader>c', group = '[C]ode', mode = { 'n' } },
+        { '<leader>d', group = '[D]ebug', mode = { 'n' } },
       },
     },
   },
