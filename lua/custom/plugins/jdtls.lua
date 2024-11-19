@@ -85,33 +85,32 @@ return {
             {
               mode = 'n',
               buffer = args.buf,
-              { '<leader>cx', group = 'extract' },
-              { '<leader>cxv', require('jdtls').extract_variable_all, desc = 'Extract Variable' },
-              { '<leader>cxc', require('jdtls').extract_constant, desc = 'Extract Constant' },
-              { 'gs', require('jdtls').super_implementation, desc = 'Goto Super' },
-              { 'gS', require('jdtls.tests').goto_subjects, desc = 'Goto Subjects' },
-              { '<leader>co', require('jdtls').organize_imports, desc = 'Organize Imports' },
+              { '<leader>ev', require('jdtls').extract_variable_all, desc = '[V]ariable' },
+              { '<leader>ec', require('jdtls').extract_constant, desc = '[C]onstant' },
+              { '<leader>gs', require('jdtls').super_implementation, desc = '[S]uper' },
+              { '<leader>gS', require('jdtls.tests').goto_subjects, desc = '[S]ubjects' },
+              { '<leader>co', require('jdtls').organize_imports, desc = '[O]rganize Imports' },
             },
           }
           wk.add {
             {
               mode = 'v',
               buffer = args.buf,
-              { '<leader>cx', group = 'extract' },
               {
-                '<leader>cxm',
+                '<leader>em',
                 [[<ESC><CMD>lua require('jdtls').extract_method(true)<CR>]],
-                desc = 'Extract Method',
+                desc = '[M]ethod',
               },
+              -- TODO: Commented out Extract Variable. Does the default defined in refactoring work?
+              --              {
+              --                '<leader>',
+              --                [[<ESC><CMD>lua require('jdtls').extract_variable_all(true)<CR>]],
+              --                desc = 'Extract Variable',
+              --              },
               {
-                '<leader>cxv',
-                [[<ESC><CMD>lua require('jdtls').extract_variable_all(true)<CR>]],
-                desc = 'Extract Variable',
-              },
-              {
-                '<leader>cxc',
+                '<leader>ec',
                 [[<ESC><CMD>lua require('jdtls').extract_constant(true)<CR>]],
-                desc = 'Extract Constant',
+                desc = '[C]onstant',
               },
             },
           }

@@ -322,11 +322,13 @@ require('lazy').setup({
         { '<leader>s', group = '[S]earch', mode = { 'n' } },
         { '<leader>r', group = '[R]ename', mode = { 'n' } },
         { '<leader>q', group = '[Q]uickfix Toggle List', mode = { 'n' } },
-        { '<leader>e', group = '[E]xtract', mode = { 'n' } },
+        { '<leader>e', group = '[E]xtract', mode = { 'n', 'v', 'x' } },
         { '<leader>g', group = '[G]o to', mode = { 'n' } },
+        { '<leader>gl', group = '[L]ist', mode = { 'n' } },
         { '<leader>t', group = '[T]oggle', mode = { 'n' } },
-        { '<leader>c', group = '[C]ode', mode = { 'n' } },
+        { '<leader>c', group = '[C]ode', mode = { 'n', 'v' } },
         { '<leader>d', group = '[D]ebug', mode = { 'n' } },
+        { '<leader>v', group = '[V]CS', mode = { 'n' } },
       },
     },
   },
@@ -418,17 +420,17 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>bl', builtin.buffers, { desc = '[L]ist' })
 
       -- Slightly advanced example of overriding default behavior and theme
-      vim.keymap.set('n', '<leader>sb', function()
+      vim.keymap.set('n', '<leader>bs', function()
         -- You can pass additional configuration to Telescope to change the theme, layout, etc.
         builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
           winblend = 10,
           previewer = false,
         })
-      end, { desc = 'Current [B]uffer' })
+      end, { desc = 'Current [S]earch' })
 
       -- It's also possible to pass additional configuration options.
       --  See `:help telescope.builtin.live_grep()` for information about particular keys
-      vim.keymap.set('n', '<leader>sB', function()
+      vim.keymap.set('n', '<leader>sb', function()
         builtin.live_grep {
           grep_open_files = true,
           prompt_title = 'Live Grep in Open Files',
