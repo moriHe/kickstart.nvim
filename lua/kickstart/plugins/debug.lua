@@ -5,13 +5,9 @@
 -- Primarily focused on configuring the debugger for Go, but can
 -- be extended to other languages as well. That's why it's called
 -- kickstart.nvim and not kitchen-sink.nvim ;)
--- TODO: Dependencies for java tests and debugging are ensure_installed in init.lua
--- However, it might be useful to mention them here too. Since it is tightly coupled.
 
--- TODO: See if tests work or what needs to be setup for it.
--- And secondary, debug junit tests https://github.com/mfussenegger/nvim-jdtls
+-- TODO: Revisit https://github.com/mfussenegger/nvim-jdtls if test setups are missing and necessary (eg junit testing)
 
--- TODO: Maybe setup more keymaps for debugging.
 return {
   -- NOTE: Yes, you can install new plugins here!
   'mfussenegger/nvim-dap',

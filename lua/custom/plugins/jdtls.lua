@@ -117,12 +117,6 @@ return {
                 [[<ESC><CMD>lua require('jdtls').extract_method(true)<CR>]],
                 desc = '[M]ethod',
               },
-              -- TODO: Commented out Extract Variable. Does the default defined in refactoring work?
-              --              {
-              --                '<leader>',
-              --                [[<ESC><CMD>lua require('jdtls').extract_variable_all(true)<CR>]],
-              --                desc = 'Extract Variable',
-              --              },
               {
                 '<leader>ec',
                 [[<ESC><CMD>lua require('jdtls').extract_constant(true)<CR>]],
