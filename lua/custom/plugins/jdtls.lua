@@ -43,6 +43,23 @@ return {
     local function attach_jdtls()
       local fname = vim.api.nvim_buf_get_name(0)
 
+      -- Install java-debug and store path to .jar in ~/.env JAVA_DEBUG_PLUGIN
+      -- Or see initialitation path of .env in init.lua
+      -- For reference: See https://github.com/mfussenegger/nvim-jdtls section "java-debug-installation"
+      local java_debug_path = vim.fn.getenv 'JAVA_DEBUG_PLUGIN'
+
+      local isDebuggerSetup = true
+      if not java_debug_path or type(java_debug_path) ~= 'string' or java_debug_path == '' then
+        isDebuggerSetup = false
+        vim.notify(
+          'WARN: JAVA_DEBUG_PLUGIN environment variable is not set or invalid! You can ignore this warning if you dont need the debugger',
+          vim.log.levels.WARN
+        )
+      end
+
+      local java_debug_glob = isDebuggerSetup and vim.fn.glob(java_debug_path, 1) or nil
+      local bundles = java_debug_glob and { java_debug_glob } or {}
+
       local config = {
         cmd = full_cmd {
           root_dir = get_root_dir,
@@ -52,7 +69,7 @@ return {
         },
         root_dir = get_root_dir(fname),
         init_options = {
-          bundles = {},
+          bundles = bundles,
         },
         settings = {
           java = {
