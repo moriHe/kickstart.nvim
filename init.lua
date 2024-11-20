@@ -83,7 +83,7 @@ I hope you enjoy your Neovim journey,
 
 P.S. You can delete this when you're done too. It's your config now! :)
 --]]
--- Load env file
+-- INFO: Added a env file loader
 local function load_env_file()
   local env_file = vim.fn.expand '~/.env'
   if vim.fn.filereadable(env_file) == 1 then

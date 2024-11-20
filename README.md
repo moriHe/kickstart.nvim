@@ -230,4 +230,5 @@ sudo dnf install -y gcc make git ripgrep fd-find unzip neovim
 sudo pacman -S --noconfirm --needed gcc make git ripgrep fd unzip neovim
 ```
 </details>
-
+### My own remarks:
+<details><summary>Check the INFO tag for changes to the kickstart project.</summary></details>

@@ -42,7 +42,6 @@ return {
     -- Attach the language server on Java files
     local function attach_jdtls()
       local fname = vim.api.nvim_buf_get_name(0)
-
       -- Install java-debug and store path to .jar in ~/.env JAVA_DEBUG_PLUGIN
       -- Or see initialitation path of .env in init.lua
       -- For reference: See https://github.com/mfussenegger/nvim-jdtls section "java-debug-installation"
@@ -136,6 +135,7 @@ return {
     })
 
     -- Trigger the first attachment (since auto-command doesn't fire initially)
-    attach_jdtls()
+    -- INFO: I commented out the line below because the code runs twice right now. If it causes any issues, uncomment attach_jdtls()
+    --    attach_jdtls()
   end,
 }
