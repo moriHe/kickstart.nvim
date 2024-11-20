@@ -32,6 +32,7 @@ return {
     local dapui = require 'dapui'
     return {
       -- Basic debugging keymaps, feel free to change to your liking!
+      { '<leader>dt', dapui.toggle, desc = '[T]oggle UI' },
       { '<leader>ds', dap.continue, desc = '[S]tart' },
       { '<leader>di', dap.step_into, desc = 'Step [I]nto' },
       { '<leader>dl', dap.step_over, desc = '[L]eap Over' },
@@ -70,6 +71,22 @@ return {
       },
     }
 
+    dap.configurations.java = {
+      {
+        type = 'java',
+        request = 'launch',
+        name = 'Launch Application',
+        mainClass = 'com.example.Main',
+        classPaths = { 'target/classes', 'target/dependency/*' },
+      },
+      {
+        type = 'java',
+        request = 'attach',
+        name = 'Debug (Attach)',
+        hostName = '127.0.0.1',
+        port = 5005,
+      },
+    }
     -- Dap UI setup
     -- For more information, see |:help nvim-dap-ui|
     dapui.setup {
