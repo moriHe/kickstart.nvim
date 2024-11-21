@@ -15,7 +15,7 @@ return {
       clear_all_items = 'C',
       toggle = 't', -- used as save if separate_save_and_remove is true
       open_vertical = 's',
-      open_horizontal = 'h',
+      open_horizontal = 'S',
       quit = 'q',
       remove = 'd', -- only used if separate_save_and_remove is true
       next_item = 'n',
