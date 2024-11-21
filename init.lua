@@ -333,6 +333,7 @@ require('lazy').setup({
       -- Document existing key chains
       spec = {
         { '<leader>b', group = '[B]uffer', mode = { 'n' } },
+        { '<leader>bl', group = '[L]ist', mode = { 'n' } },
         { '<leader>s', group = '[S]earch', mode = { 'n' } },
         { '<leader>r', group = '[R]ename', mode = { 'n' } },
         { '<leader>q', group = '[Q]uickfix Toggle List', mode = { 'n' } },
@@ -431,7 +432,7 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[D]iagnostics' })
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[R]esume' })
       vim.keymap.set('n', '<leader>sh', builtin.oldfiles, { desc = '[H]istory' })
-      vim.keymap.set('n', '<leader>bl', builtin.buffers, { desc = '[L]ist' })
+      vim.keymap.set('n', '<leader>bla', builtin.buffers, { desc = '[A]ll' })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>bs', function()
